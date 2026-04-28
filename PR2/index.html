@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система моніторингу ДБЖ</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>UPS Control</h2>
+                <div class="brand-line"></div>
+            </div>
+
+            <div class="control-panel">
+                <button id="updateBtn" class="btn btn-primary">ОНОВИТИ ДАНІ</button>
+                <button id="autoUpdateBtn" class="btn btn-outline">АВТООНОВЛЕННЯ</button>
+                <div class="timer-display">
+                    <span>Таймер: </span>
+                    <span id="autoStatus">Вимкнено</span>
+                </div>
+            </div>
+
+            <div class="footer-info">
+                <span>Розробник: Мариненко Д.</span>
+                <span>Група: ТВ-41</span>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>Панель керування ДБЖ</h1>
+                </div>
+                <div class="time-widget">
+                    <span class="time-label">Час оновлення:</span>
+                    <strong id="lastUpdate">--:--:--</strong>
+                </div>
+            </header>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="card-title">ВХІДНА НАПРУГА</div>
+                    <div class="card-value">
+                        <span id="param0" class="num">0</span>
+                        <span class="unit">V</span>
+                    </div>
+                    <div id="bar0" class="indicator-line"></div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="card-title">ВИХІДНА НАПРУГА</div>
+                    <div class="card-value">
+                        <span id="param1" class="num">0</span>
+                        <span class="unit">V</span>
+                    </div>
+                    <div id="bar1" class="indicator-line"></div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="card-title">ПОТОЧНЕ НАВАНТАЖЕННЯ</div>
+                    <div class="card-value">
+                        <span id="param2" class="num">0</span>
+                        <span class="unit">%</span>
+                    </div>
+                    <div id="bar2" class="indicator-line"></div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="card-title">РІВЕНЬ ЗАРЯДУ АКБ</div>
+                    <div class="card-value">
+                        <span id="param3" class="num">0</span>
+                        <span class="unit">%</span>
+                    </div>
+                    <div id="bar3" class="indicator-line"></div>
+                </div>
+            </div>
+
+            <div class="bottom-split">
+                <div class="chart-container block-panel">
+                    <div class="card-title">ДИНАМІКА НАПРУГИ</div>
+                    <div class="canvas-wrapper">
+                        <canvas id="upsChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="status-container block-panel">
+                    <div class="card-title">СТАН СИСТЕМИ</div>
+                    <div class="mode-display">
+                        <h2 id="modeVal">МЕРЕЖА</h2>
+                        <span id="modeLabel" class="text-muted">Штатний режим живлення</span>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="extra-stats">
+                        <div class="stat-row">
+                            <span class="stat-name">Частота:</span>
+                            <span id="freqVal" class="stat-data">50.00 Hz</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-name">Температура:</span>
+                            <span id="tempVal" class="stat-data">25 °C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
