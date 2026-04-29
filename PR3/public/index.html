@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Діагностика: Технічний стан | V12</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>DIAGNOSTICS SYS</h2>
+                <div class="brand-line"></div>
+            </div>
+            <div class="info-group">
+                <span class="info-label">МОДУЛЬ</span>
+                <span class="info-value">Реєстр протоколів</span>
+            </div>
+            <div class="footer-info">
+                <span>Розробник: Мариненко Д.</span>
+                <span>Група: ТВ-41</span>
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <header class="top-bar">
+                <div class="page-title">
+                    <h1>Фіксація технічного стану обладнання</h1>
+                </div>
+            </header>
+
+            <div class="content-grid">
+                <section class="block-panel form-section">
+                    <div class="card-title">НОВИЙ ПРОТОКОЛ ДІАГНОСТИКИ</div>
+                    <form id="diagnosticForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="type">Тип обладнання *</label>
+                                <select id="type" name="type" required>
+                                    <option value="">Оберіть тип</option>
+                                    <option value="Трансформатор">Трансформатор</option>
+                                    <option value="Вимикач">Вимикач</option>
+                                    <option value="Роз'єднувач">Роз'єднувач</option>
+                                    <option value="Кабельна лінія">Кабельна лінія</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="number">Інвентарний номер *</label>
+                                <input type="text" id="number" name="number" required placeholder="Напр.: TR-405">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="substation">Підстанція / Об'єкт *</label>
+                            <input type="text" id="substation" name="substation" required placeholder="Напр.: ПС 110/35/10 кВ Центральна">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="history">Історія дефектів (Попередня діагностика)</label>
+                            <input type="text" id="history" name="history" placeholder="Короткий опис попередніх проблем (якщо є)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="results">Результати поточного огляду *</label>
+                            <textarea id="results" name="results" required placeholder="Опишіть виявлені дефекти, рівень масла, стан ізоляції тощо..."></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="notify" id="notify">
+                                <span class="checkbox-text">Надіслати термінове сповіщення ремонтній бригаді (Критичний дефект)</span>
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">ЗБЕРЕГТИ ПРОТОКОЛ</button>
+                            <button type="reset" class="btn btn-outline">ОЧИСТИТИ</button>
+                        </div>
+                    </form>
+                    <div id="messageBox" class="message-box"></div>
+                </section>
+
+                <section class="block-panel list-section">
+                    <div class="card-title">АРХІВ ПРОТОКОЛІВ</div>
+                    <div id="recordsList" class="records-list">
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
