@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCADA Live Monitor | WebSocket</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>SCADA LIVE</h2>
+                <div class="brand-line"></div>
+            </div>
+            <div class="status-panel">
+                <div class="status-indicator" id="wsStatus">Підключення...</div>
+            </div>
+            <div class="stat-card">
+                <h3>ПОТОЧНЕ НАВАНТАЖЕННЯ</h3>
+                <div class="stat-value"><span id="sysLoad">0</span> МВт</div>
+            </div>
+            <div class="stat-card">
+                <h3>ЧАСТОТА МЕРЕЖІ</h3>
+                <div class="stat-value"><span id="sysFreq">0</span> Гц</div>
+            </div>
+            <div class="devices-list" id="devicesList">
+            </div>
+        </aside>
+
+        <main class="main-area">
+            <div class="top-panel">
+                <div class="chart-container">
+                    <canvas id="loadChart"></canvas>
+                </div>
+            </div>
+            <div class="bottom-panel">
+                <div id="map"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
