@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCADA Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>SCADA CONTROL</h2>
+                <div class="brand-line"></div>
+            </div>
+            
+            <div class="panel">
+                <h3>КОНФІГУРАЦІЯ (POST)</h3>
+                <form id="configForm">
+                    <div class="form-group">
+                        <label>Назва системи</label>
+                        <input type="text" id="sysNameInput" name="systemName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Частота опитування (с)</label>
+                        <input type="number" id="sampleRateInput" name="samplingRate" min="1" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">НАЛАШТУВАТИ</button>
+                </form>
+            </div>
+
+            <div class="panel">
+                <h3>СИМУЛЯЦІЯ (PUT)</h3>
+                <form id="updateForm">
+                    <div class="form-group">
+                        <label>Рівень тривоги</label>
+                        <select name="alarmLevel" id="alarmSelect">
+                            <option value="normal">Normal</option>
+                            <option value="warning">Warning</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Пам'ять сховища (%)</label>
+                        <input type="number" name="storageUsed" id="storageInput" min="0" max="100">
+                    </div>
+                    <button type="submit" class="btn btn-outline">ОНОВИТИ ПАРАМЕТРИ</button>
+                </form>
+            </div>
+            <div id="messageBox" class="message-box"></div>
+        </aside>
+
+        <main class="main-area">
+            <header class="top-bar">
+                <h1 id="displaySysName">Завантаження...</h1>
+                <div class="status-badges">
+                    <span id="commStatus" class="badge">--</span>
+                    <span id="alarmStatus" class="badge">--</span>
+                </div>
+            </header>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-title">Підключені пристрої</div>
+                    <div class="stat-value" id="valDevices">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Точки даних</div>
+                    <div class="stat-value" id="valPoints">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Опитування</div>
+                    <div class="stat-value"><span id="valRate">0</span> с</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Сховище даних</div>
+                    <div class="stat-value"><span id="valStorage">0</span> %</div>
+                </div>
+            </div>
+
+            <div class="data-grids">
+                <div class="panel flex-col">
+                    <div class="panel-header">
+                        <h3>ПРИСТРОЇ (GET /devices)</h3>
+                        <button class="btn btn-sm btn-outline" onclick="loadDevices()">Оновити</button>
+                    </div>
+                    <div id="devicesList" class="list-container"></div>
+                </div>
+
+                <div class="panel flex-col">
+                    <div class="panel-header">
+                        <h3>АКТИВНІ ТРИВОГИ (GET /alarms)</h3>
+                        <button class="btn btn-sm btn-outline" onclick="loadAlarms()">Оновити</button>
+                    </div>
+                    <div id="alarmsList" class="list-container"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

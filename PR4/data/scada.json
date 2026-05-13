@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "systemName": "Головна SCADA Підстанції",
+  "connectedDevices": 12,
+  "dataPointsCount": 1560,
+  "samplingRate": 2,
+  "alarmLevel": "critical",
+  "communicationStatus": "online",
+  "lastUpdate": "2026-05-13T17:57:43.772Z",
+  "storageUsed": "45"
+}

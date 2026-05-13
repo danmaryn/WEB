@@ -1,0 +1,12 @@
+{
+  "name": "scada-rest-api",
+  "version": "1.0.0",
+  "description": "REST API для SCADA систем моніторингу",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.22.2"
+  }
+}
