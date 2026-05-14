@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1778720771983",
+    "email": "manager@kpi.ua",
+    "password": "$2b$10$CiCOA87my796p7oJWE6f/etfZbfMreeC5JAay7mGSQVka.b2P0mxG",
+    "name": "Олексій",
+    "role": "energy_manager"
+  },
+  {
+    "id": "1778720791296",
+    "email": "ceo@kpi.ua",
+    "password": "$2b$10$zDFZdgKLiuFgdx26vcVsWOjqEbswdJn9YmmjQyW1XUsm.5jHb4g6q",
+    "name": "Богдан",
+    "role": "ceo"
+  }
+]
